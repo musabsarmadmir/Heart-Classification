@@ -1,8 +1,8 @@
 ##############################
 # Core Runtime & API Layer   #
 ##############################
-flask==3.0.3
-flask-cors==4.0.0
+fastapi==0.115.0
+uvicorn==0.30.6
 
 ##############################
 # Configuration / Validation #
@@ -13,15 +13,15 @@ python-dotenv==1.0.1  # Load .env for config (optional but common)
 ##############################
 # ML / Numeric Stack         #
 ##############################
-tensorflow==2.20.0   # Provides model loading & inference
-numpy==1.26.4        # Tensor operations / array math
+tensorflow==2.20.0   # TF/Keras model loading & inference
+numpy==1.26.4        # Array math
 pandas==2.2.2        # CSV loading & preprocessing
+joblib==1.4.2        # Optional: support .pkl models
 
 ##############################
-# Production Servers         #
+# Dev / Prod Servers         #
 ##############################
-gunicorn==21.2.0 ; platform_system != "Windows"   # Unix WSGI
-waitress==2.1.2 ; platform_system == "Windows"     # Windows production WSGI alternative
+# Use uvicorn to run FastAPI both locally and in prod
 
 ##############################
 # Tooling / Testing (Optional)
@@ -29,15 +29,10 @@ waitress==2.1.2 ; platform_system == "Windows"     # Windows production WSGI alt
 pytest==8.2.0
 
 ##############################
-# Optional ML Utilities      #
-##############################
-scikit-learn==1.5.2      # Extra metrics, preprocessing, model comparison
-joblib==1.4.2            # Serialization utilities (pipelines, caching)
-
-##############################
-# Optional Explainability & CLI#
+# Optional Explainability   #
 ##############################
 shap==0.45.1            # Model explainability (SHAP values)
+
 rich==13.7.1            # Rich terminal output for scripts
 
 ##############################
