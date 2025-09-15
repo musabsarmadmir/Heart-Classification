@@ -1,0 +1,58 @@
+# --- OS / Editor ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+.python-version
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Notebooks cache
+.ipynb_checkpoints/
+
+# --- Node / Vite / React ---
+frontend/node_modules/
+node_modules/
+**/node_modules/
+frontend/dist/
+dist/
+.parcel-cache/
+.vite/
+
+# --- Env / Secrets ---
+.env
+*.env
+*.env.*
+!*.env.example
+
+# --- Logs ---
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Model Artifacts (large binaries not tracked) ---
+backend/ml_model/**
+backend/models_saved/**
+!backend/.env.example
+
+# Allow keeping placeholders if added later
+!*gitkeep

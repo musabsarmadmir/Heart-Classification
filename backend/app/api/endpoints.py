@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from ..models.schemas import (
+from ..prediction_files.schemas import (
     HealthResponse,
     ModelInfo,
     PredictRequest,
@@ -9,7 +9,8 @@ from ..models.schemas import (
     load_feature_order,
 )
 from ..core.config import get_settings
-from ..models.predictor import Predictor
+from ..prediction_files.predictor import Predictor
+from pathlib import Path
 
 
 router = APIRouter()
@@ -50,3 +51,24 @@ def batch_predict(req: BatchPredictRequest) -> BatchPredictResponse:
             raise HTTPException(status_code=400, detail=f"Row {i} missing features: {missing}")
     probas, labels = _predictor.predict_batch(req.rows)
     return BatchPredictResponse(probabilities=probas, labels=labels)
+
+
+@router.get("/config")
+def config_info():
+    mp = Path(settings.model_path)
+    fp = Path(settings.feature_order_path)
+    dp = Path(settings.dataset_path)
+    return {
+        "app_name": settings.app_name,
+        "api_prefix": settings.api_prefix,
+        "log_level": settings.log_level,
+        "cors_origins": [o.strip() for o in settings.cors_origins.split(",") if o.strip()],
+        "model_path": str(mp),
+        "model_path_exists": mp.exists(),
+        "feature_order_path": str(fp),
+        "feature_order_path_exists": fp.exists(),
+        "dataset_path": str(dp),
+        "dataset_path_exists": dp.exists(),
+        "feature_count": len(_feature_order),
+        "model_ready": _predictor.ready(),
+    }
