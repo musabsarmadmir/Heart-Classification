@@ -1,0 +1,52 @@
+##############################
+# Core Runtime & API Layer   #
+##############################
+flask==3.0.3
+flask-cors==4.0.0
+
+##############################
+# Configuration / Validation #
+##############################
+pydantic==2.7.0
+python-dotenv==1.0.1  # Load .env for config (optional but common)
+
+##############################
+# ML / Numeric Stack         #
+##############################
+tensorflow==2.20.0   # Provides model loading & inference
+numpy==1.26.4        # Tensor operations / array math
+pandas==2.2.2        # CSV loading & preprocessing
+
+##############################
+# Production Servers         #
+##############################
+gunicorn==21.2.0 ; platform_system != "Windows"   # Unix WSGI
+waitress==2.1.2 ; platform_system == "Windows"     # Windows production WSGI alternative
+
+##############################
+# Tooling / Testing (Optional)
+##############################
+pytest==8.2.0
+
+##############################
+# Optional ML Utilities      #
+##############################
+scikit-learn==1.5.2      # Extra metrics, preprocessing, model comparison
+joblib==1.4.2            # Serialization utilities (pipelines, caching)
+
+##############################
+# Optional Explainability & CLI#
+##############################
+shap==0.45.1            # Model explainability (SHAP values)
+rich==13.7.1            # Rich terminal output for scripts
+
+##############################
+# Installation Notes
+##############################
+# Create & activate venv, then install:
+#   python -m venv .venv
+#   . .venv/Scripts/Activate.ps1   (PowerShell on Windows)
+#   python -m pip install --upgrade pip
+#   pip install -r backend/requirements.txt
+
+# If you do not need dotenv or a Windows WSGI server you can remove those lines.
