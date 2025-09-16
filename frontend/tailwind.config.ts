@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import animate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -64,13 +65,11 @@ export default {
         'card': 'var(--shadow-card)',
         'button': 'var(--shadow-button)',
       },
-      borderRadius: {
-        'medical': 'var(--radius-medical)',
-      },
       transitionProperty: {
         'medical': 'var(--transition-medical)',
       },
       borderRadius: {
+        medical: 'var(--radius-medical)',
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
@@ -99,5 +98,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [animate],
 } satisfies Config;
