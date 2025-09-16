@@ -77,10 +77,10 @@ export const HeartDiseasePredictor: React.FC<HeartDiseasePredictorProps> = ({
               <CardHeader className="pb-6">
                 <CardTitle className="flex items-center gap-2 text-2xl">
                   <Stethoscope className="h-6 w-6 text-primary" />
-                  Patient Assessment
+                  Assessment
                 </CardTitle>
                 <CardDescription>
-                  Enter the patient's medical information for heart disease risk evaluation
+                  Enter patient info for risk estimate
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -124,7 +124,7 @@ export const HeartDiseasePredictor: React.FC<HeartDiseasePredictorProps> = ({
                   <div className="space-y-4">
                     <h3 className="flex items-center gap-2 text-lg font-semibold text-foreground">
                       <Activity className="h-5 w-5 text-primary" />
-                      Symptoms & Clinical Presentation
+                      Symptoms
                     </h3>
                     <div className="grid gap-4 sm:grid-cols-2">
                       <FormField
@@ -145,7 +145,7 @@ export const HeartDiseasePredictor: React.FC<HeartDiseasePredictorProps> = ({
                       </FormField>
 
                       <FormField
-                        label="Exercise Induced Angina"
+                        label="Exercise-Induced Angina"
                         error={errors.exang?.message}
                       >
                         <Select onValueChange={(value) => setValue('exang', parseInt(value))}>
@@ -165,7 +165,7 @@ export const HeartDiseasePredictor: React.FC<HeartDiseasePredictorProps> = ({
                   <div className="space-y-4">
                     <h3 className="flex items-center gap-2 text-lg font-semibold text-foreground">
                       <Zap className="h-5 w-5 text-primary" />
-                      Vital Signs & Lab Results
+                      Vitals & Labs
                     </h3>
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                       <FormField
@@ -180,7 +180,7 @@ export const HeartDiseasePredictor: React.FC<HeartDiseasePredictorProps> = ({
                       </FormField>
 
                       <FormField
-                        label="Serum Cholesterol (mg/dl)"
+                        label="Serum Cholesterol (mg/dL)"
                         error={errors.chol?.message}
                       >
                         <Input
@@ -191,7 +191,7 @@ export const HeartDiseasePredictor: React.FC<HeartDiseasePredictorProps> = ({
                       </FormField>
 
                       <FormField
-                        label="Fasting Blood Sugar > 120 mg/dl"
+                        label="Fasting Blood Sugar (>120 mg/dL)"
                         error={errors.fbs?.message}
                       >
                         <Select onValueChange={(value) => setValue('fbs', parseInt(value))}>
@@ -206,7 +206,7 @@ export const HeartDiseasePredictor: React.FC<HeartDiseasePredictorProps> = ({
                       </FormField>
 
                       <FormField
-                        label="Max Heart Rate Achieved (bpm)"
+                        label="Max Heart Rate (bpm)"
                         error={errors.thalach?.message}
                       >
                         <Input
@@ -217,7 +217,7 @@ export const HeartDiseasePredictor: React.FC<HeartDiseasePredictorProps> = ({
                       </FormField>
 
                       <FormField
-                        label="ST Depression (oldpeak)"
+                        label="ST Depression"
                         error={errors.oldpeak?.message}
                       >
                         <Input
@@ -235,7 +235,7 @@ export const HeartDiseasePredictor: React.FC<HeartDiseasePredictorProps> = ({
                     <h3 className="text-lg font-semibold text-foreground">Diagnostic Tests</h3>
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                       <FormField
-                        label="Resting ECG Results"
+                        label="Resting ECG"
                         error={errors.restecg?.message}
                       >
                         <Select onValueChange={(value) => setValue('restecg', parseInt(value))}>
@@ -267,7 +267,7 @@ export const HeartDiseasePredictor: React.FC<HeartDiseasePredictorProps> = ({
                       </FormField>
 
                       <FormField
-                        label="Major Vessels (0-3) colored by fluoroscopy"
+                        label="Major Vessels (0–3)"
                         error={errors.ca?.message}
                       >
                         <Select onValueChange={(value) => setValue('ca', parseInt(value))}>
@@ -318,7 +318,7 @@ export const HeartDiseasePredictor: React.FC<HeartDiseasePredictorProps> = ({
                       ) : (
                         <>
                           <Heart className="h-5 w-5" />
-                          Predict Heart Disease Risk
+                          Predict Risk
                         </>
                       )}
                     </Button>
