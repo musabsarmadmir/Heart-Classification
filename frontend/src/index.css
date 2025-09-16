@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Medical Heart Disease Classifier Design System */
+
+@layer base {
+  :root {
+    /* Core medical theme colors */
+    --background: 210 20% 98%;
+    --foreground: 215 25% 27%;
+    
+    /* Medical card system */
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 27%;
+    
+    /* Medical primary - professional blue */
+    --primary: 210 100% 56%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 210 100% 50%;
+    
+    /* Medical secondary - calming teal */
+    --secondary: 180 25% 94%;
+    --secondary-foreground: 180 10% 30%;
+    
+    /* Medical accent - heart red */
+    --accent: 0 84% 60%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Medical success - health green */
+    --success: 145 63% 42%;
+    --success-foreground: 0 0% 100%;
+    
+    /* Medical muted tones */
+    --muted: 210 15% 95%;
+    --muted-foreground: 215 15% 50%;
+    
+    /* Form elements */
+    --input: 210 15% 97%;
+    --input-foreground: 215 25% 27%;
+    --border: 210 15% 88%;
+    --ring: 210 100% 56%;
+    
+    /* Medical gradients */
+    --gradient-medical: linear-gradient(135deg, hsl(210 100% 56%), hsl(195 85% 60%));
+    --gradient-heart: linear-gradient(135deg, hsl(0 84% 60%), hsl(15 85% 65%));
+    --gradient-success: linear-gradient(135deg, hsl(145 63% 42%), hsl(160 55% 48%));
+    --gradient-bg: linear-gradient(135deg, hsl(210 25% 98%), hsl(200 20% 96%));
+    
+    /* Medical shadows */
+    --shadow-medical: 0 4px 20px -2px hsl(210 100% 56% / 0.15);
+    --shadow-card: 0 2px 15px -3px hsl(215 25% 27% / 0.1);
+    --shadow-button: 0 2px 8px -2px hsl(210 100% 56% / 0.3);
+    
+    /* Professional spacing and effects */
+    --radius-medical: 12px;
+    --transition-medical: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Popover and overlays */
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 27%;
+    
+    /* Destructive states */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
