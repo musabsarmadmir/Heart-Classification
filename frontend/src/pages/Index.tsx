@@ -1,12 +1,44 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { HeartDiseasePredictor, HeartDiseaseFormData } from '@/components/HeartDiseasePredictor';
 import { predictHeartDisease, type PredictResponse } from '@/lib/api';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Heart } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+
+type HistoryEntry = {
+  at: number; // epoch ms
+  result: PredictResponse;
+};
+
+const HISTORY_KEY = 'predict.history.v1';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState<PredictResponse | null>(null);
+  const [history, setHistory] = useState<HistoryEntry[]>([]);
+  const [historyOpen, setHistoryOpen] = useState(false);
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(HISTORY_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw) as HistoryEntry[];
+        if (Array.isArray(parsed)) setHistory(parsed.slice(0, 3));
+      }
+    } catch {
+      // ignore
+    }
+  }, []);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(HISTORY_KEY, JSON.stringify(history.slice(0, 3)));
+    } catch {
+      // ignore
+    }
+  }, [history]);
 
   const handlePredict = async (data: HeartDiseaseFormData) => {
     setIsLoading(true);
@@ -32,6 +64,7 @@ const Index = () => {
 
       const response = await predictHeartDisease(payload);
       setResult(response);
+      setHistory((prev) => [{ at: Date.now(), result: response }, ...prev].slice(0, 3));
     } catch (error) {
       console.error('Prediction error:', error);
     } finally {
@@ -49,6 +82,51 @@ const Index = () => {
       {result && (
         <ResultPanel result={result} />
       )}
+
+      {/* Previous Results */}
+      <Card>
+        <CardHeader className="pb-2">
+          <div className="flex items-center justify-between gap-2">
+            <div>
+              <CardTitle className="text-xl">Previous Results</CardTitle>
+              <CardDescription>Latest three predictions on this device</CardDescription>
+            </div>
+            <div className="flex items-center gap-2">
+              <Button variant="outline" size="sm" onClick={() => setHistory([])} disabled={history.length === 0}>Clear</Button>
+              <Collapsible open={historyOpen} onOpenChange={setHistoryOpen}>
+                <CollapsibleTrigger asChild>
+                  <Button variant="secondary" size="sm">{historyOpen ? 'Hide' : 'Show'}</Button>
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <div className="pt-4">
+                    {history.length === 0 ? (
+                      <div className="text-sm text-muted-foreground">No recent results</div>
+                    ) : (
+                      <ul className="space-y-3">
+                        {history.map((h, idx) => {
+                          const isPatient = h.result.label === 1;
+                          const prob = Math.round((isPatient ? h.result.probability : 1 - h.result.probability) * 100);
+                          const when = new Date(h.at);
+                          const time = when.toLocaleString();
+                          return (
+                            <li key={h.at + ':' + idx} className="flex items-center justify-between gap-3 rounded-md border p-3">
+                              <div className="flex items-center gap-3">
+                                <Badge variant={isPatient ? 'destructive' : 'secondary'}>{isPatient ? 'Patient' : 'Healthy'}</Badge>
+                                <span className="text-sm text-muted-foreground">{time}</span>
+                              </div>
+                              <div className="text-sm font-semibold">Confidence: {prob}%</div>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
+                  </div>
+                </CollapsibleContent>
+              </Collapsible>
+            </div>
+          </div>
+        </CardHeader>
+      </Card>
     </div>
   );
 };
