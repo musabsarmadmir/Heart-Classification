@@ -1,0 +1,11 @@
+# Production-only dependencies (runtime slimming)
+# Excludes: shap, rich, pytest, python-dotenv (if env vars provided by platform)
+fastapi==0.115.0
+uvicorn==0.30.6
+pydantic==2.7.0
+
+# ML stack
+tensorflow==2.20.0
+numpy==1.26.4
+pandas==2.2.2
+joblib==1.4.2

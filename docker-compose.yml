@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    env_file:
+      - backend/.env.example # For local testing; create a real .env for secrets
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+# Note: Frontend is deployed on Vercel, so no frontend service here.
+# If you later want to containerize the frontend for local static testing, you can add:
+#  web:
+#    build: ./frontend
+#    environment:
+#      - VITE_API_URL=http://localhost:8000
+#    ports:
+#      - "5173:80"
+# and create a simple frontend Dockerfile.
