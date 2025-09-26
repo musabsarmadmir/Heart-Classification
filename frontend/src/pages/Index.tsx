@@ -3,6 +3,7 @@ import { HeartDiseasePredictor, HeartDiseaseFormData } from '@/components/HeartD
 import { predictHeartDisease, type PredictResponse } from '@/lib/api';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Heart } from 'lucide-react';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
@@ -126,6 +127,7 @@ const Index = () => {
             </div>
           </div>
         </CardHeader>
+        <div className="ml-4"><ThemeToggle /></div>
       </Card>
     </div>
   );
@@ -147,11 +149,31 @@ const ResultPanel: React.FC<ResultPanelProps> = ({ result }) => {
   const labelText = isPatient ? 'Heart Patient' : 'Healthy';
 
   return (
-    <Card className={isPatient ? 'border-red-200 bg-red-50/40' : 'border-green-200 bg-green-50/40'}>
+    <Card
+      className={
+        isPatient
+          ? 'border-red-200 bg-red-50/40 dark:border-red-600 dark:bg-red-950/30'
+          : 'border-green-200 bg-green-50/40 dark:border-green-600 dark:bg-green-950/30'
+      }
+    >
       <CardHeader className="pb-2 items-center text-center">
         <CardTitle className="flex items-center justify-center gap-2 text-2xl">
-          <Heart className={isPatient ? 'h-6 w-6 text-red-600' : 'h-6 w-6 text-green-600'} />
-          <span className={isPatient ? 'text-red-700' : 'text-green-700'}>Result: {labelText}</span>
+          <Heart
+            className={
+              isPatient
+                ? 'h-6 w-6 text-red-600 dark:text-red-400'
+                : 'h-6 w-6 text-green-600 dark:text-green-400'
+            }
+          />
+          <span
+            className={
+              isPatient
+                ? 'text-red-700 dark:text-red-300'
+                : 'text-green-700 dark:text-green-300'
+            }
+          >
+            Result: {labelText}
+          </span>
         </CardTitle>
         <CardDescription>
           This tool provides educational insights and does not constitute medical advice.
@@ -163,11 +185,11 @@ const ResultPanel: React.FC<ResultPanelProps> = ({ result }) => {
           <div className="flex items-end justify-center gap-10">
             <div className="text-center">
               <div className="text-sm text-muted-foreground">Healthy Probability</div>
-              <div className="text-4xl font-semibold text-green-700">{healthyPct}%</div>
+              <div className="text-4xl font-semibold text-green-700 dark:text-green-300">{healthyPct}%</div>
             </div>
             <div className="text-center">
               <div className="text-sm text-muted-foreground">Heart Patient Probability</div>
-              <div className="text-4xl font-semibold text-red-700">{patientPct}%</div>
+              <div className="text-4xl font-semibold text-red-700 dark:text-red-300">{patientPct}%</div>
             </div>
           </div>
         </div>

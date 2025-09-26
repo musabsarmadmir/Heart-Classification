@@ -98,8 +98,15 @@ export const HeartDiseasePredictor: React.FC<HeartDiseasePredictorProps> = ({
                       >
                         <Input
                           type="number"
-                          {...register('age', { required: 'Age is required', min: 1, max: 120 })}
-                          className="bg-background"
+                          {...register('age', {
+                            required: 'Age is required',
+                            min: { value: 18, message: 'Min 18' },
+                            max: { value: 100, message: 'Max 100' },
+                          })}
+                          className={
+                            'bg-background ' +
+                            ((() => { const v = watch('age'); return (v < 18 || v > 100) ? 'border-destructive/70 ring-1 ring-destructive/40' : ''; })())
+                          }
                         />
                       </FormField>
 
@@ -174,8 +181,15 @@ export const HeartDiseasePredictor: React.FC<HeartDiseasePredictorProps> = ({
                       >
                         <Input
                           type="number"
-                          {...register('trestbps', { required: 'Blood pressure is required' })}
-                          className="bg-background"
+                          {...register('trestbps', {
+                            required: 'Blood pressure is required',
+                            min: { value: 80, message: 'Min 80' },
+                            max: { value: 200, message: 'Max 200' },
+                          })}
+                          className={
+                            'bg-background ' +
+                            ((() => { const v = watch('trestbps'); return (v < 80 || v > 200) ? 'border-destructive/70 ring-1 ring-destructive/40' : ''; })())
+                          }
                         />
                       </FormField>
 
@@ -185,8 +199,15 @@ export const HeartDiseasePredictor: React.FC<HeartDiseasePredictorProps> = ({
                       >
                         <Input
                           type="number"
-                          {...register('chol', { required: 'Cholesterol is required' })}
-                          className="bg-background"
+                          {...register('chol', {
+                            required: 'Cholesterol is required',
+                            min: { value: 100, message: 'Min 100' },
+                            max: { value: 500, message: 'Max 500' },
+                          })}
+                          className={
+                            'bg-background ' +
+                            ((() => { const v = watch('chol'); return (v < 100 || v > 500) ? 'border-destructive/70 ring-1 ring-destructive/40' : ''; })())
+                          }
                         />
                       </FormField>
 
@@ -211,8 +232,15 @@ export const HeartDiseasePredictor: React.FC<HeartDiseasePredictorProps> = ({
                       >
                         <Input
                           type="number"
-                          {...register('thalach', { required: 'Max heart rate is required' })}
-                          className="bg-background"
+                          {...register('thalach', {
+                            required: 'Max heart rate is required',
+                            min: { value: 60, message: 'Min 60' },
+                            max: { value: 250, message: 'Max 250' },
+                          })}
+                          className={
+                            'bg-background ' +
+                            ((() => { const v = watch('thalach'); return (v < 60 || v > 250) ? 'border-destructive/70 ring-1 ring-destructive/40' : ''; })())
+                          }
                         />
                       </FormField>
 
@@ -223,8 +251,15 @@ export const HeartDiseasePredictor: React.FC<HeartDiseasePredictorProps> = ({
                         <Input
                           type="number"
                           step="0.1"
-                          {...register('oldpeak', { required: 'Oldpeak is required', min: 0 })}
-                          className="bg-background"
+                          {...register('oldpeak', {
+                            required: 'Oldpeak is required',
+                            min: { value: 0, message: 'Min 0' },
+                            max: { value: 6, message: 'Max 6' },
+                          })}
+                          className={
+                            'bg-background ' +
+                            ((() => { const v = watch('oldpeak'); return (v < 0 || v > 6) ? 'border-destructive/70 ring-1 ring-destructive/40' : ''; })())
+                          }
                         />
                       </FormField>
                     </div>

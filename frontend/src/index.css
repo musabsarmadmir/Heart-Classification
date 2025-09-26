@@ -6,101 +6,113 @@
 
 @layer base {
   :root {
-    /* Core medical theme colors */
-    --background: 210 20% 98%;
-    --foreground: 215 25% 27%;
-    
-    /* Medical card system */
-    --card: 0 0% 100%;
-    --card-foreground: 215 25% 27%;
-    
-    /* Medical primary - professional blue */
-    --primary: 210 100% 56%;
+    /* Core palette switched to warm beige + heart red theme */
+    --background: 35 40% 96%; /* soft warm beige */
+    --foreground: 15 25% 22%; /* muted warm brown for text */
+
+    /* Cards slightly lighter than background for subtle elevation */
+    --card: 30 45% 98%;
+    --card-foreground: 15 25% 22%;
+
+    /* Primary now heart red; accent kept as supportive deeper red */
+    --primary: 0 72% 50%; /* heart red */
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 210 100% 50%;
-    
-    /* Medical secondary - calming teal */
-    --secondary: 180 25% 94%;
-    --secondary-foreground: 180 10% 30%;
-    
-    /* Medical accent - heart red */
-    --accent: 0 84% 60%;
+    --primary-hover: 0 72% 46%;
+
+    /* Secondary = pale beige tint */
+    --secondary: 28 40% 90%;
+    --secondary-foreground: 20 30% 30%;
+
+    /* Accent deeper crimson for emphasis */
+    --accent: 355 70% 48%;
     --accent-foreground: 0 0% 100%;
-    
-    /* Medical success - health green */
-    --success: 145 63% 42%;
+
+    /* Success (retain green for semantic clarity) */
+    --success: 145 50% 40%;
     --success-foreground: 0 0% 100%;
-    
-    /* Medical muted tones */
-    --muted: 210 15% 95%;
-    --muted-foreground: 215 15% 50%;
-    
-    /* Form elements */
-    --input: 210 15% 97%;
-    --input-foreground: 215 25% 27%;
-    --border: 210 15% 88%;
-    --ring: 210 100% 56%;
-    
-    /* Medical gradients */
-    --gradient-medical: linear-gradient(135deg, hsl(210 100% 56%), hsl(195 85% 60%));
-    --gradient-heart: linear-gradient(135deg, hsl(0 84% 60%), hsl(15 85% 65%));
-    --gradient-success: linear-gradient(135deg, hsl(145 63% 42%), hsl(160 55% 48%));
-    --gradient-bg: linear-gradient(135deg, hsl(210 25% 98%), hsl(200 20% 96%));
-    
-    /* Medical shadows */
-    --shadow-medical: 0 4px 20px -2px hsl(210 100% 56% / 0.15);
-    --shadow-card: 0 2px 15px -3px hsl(215 25% 27% / 0.1);
-    --shadow-button: 0 2px 8px -2px hsl(210 100% 56% / 0.3);
-    
-    /* Professional spacing and effects */
+
+    /* Muted surfaces */
+    --muted: 35 35% 93%;
+    --muted-foreground: 20 20% 42%;
+
+    /* Form elements & borders warmed */
+    --input: 35 35% 97%;
+    --input-foreground: 15 25% 22%;
+    --border: 25 25% 82%;
+    --ring: 0 72% 50%;
+
+    /* Gradients updated to warm blends */
+    --gradient-medical: linear-gradient(135deg, hsl(0 72% 50%), hsl(15 80% 55%));
+    --gradient-heart: linear-gradient(135deg, hsl(0 80% 52%), hsl(10 75% 60%));
+    --gradient-success: linear-gradient(135deg, hsl(145 50% 40%), hsl(155 45% 46%));
+    --gradient-bg: linear-gradient(135deg, hsl(35 40% 96%), hsl(30 35% 94%));
+
+    /* Warm shadows (layered red + beige glows) */
+    --shadow-medical: 0 6px 22px -4px hsl(0 60% 46% / 0.18), 0 2px 6px -1px hsl(30 50% 60% / 0.28);
+    --shadow-card: 0 4px 18px -6px hsl(0 60% 40% / 0.14), 0 1px 3px hsl(35 45% 70% / 0.35);
+    --shadow-button: 0 3px 10px -2px hsl(0 70% 50% / 0.38), 0 1px 2px hsl(25 45% 65% / 0.4);
+
+    /* Radius & transitions unchanged */
     --radius-medical: 12px;
     --transition-medical: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    
-    /* Popover and overlays */
-    --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 27%;
-    
-    /* Destructive states */
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+
+    /* Popover surfaces */
+    --popover: 30 45% 98%;
+    --popover-foreground: 15 25% 22%;
+
+    /* Destructive aligns with primary hue intensity */
+    --destructive: 0 70% 46%;
+    --destructive-foreground: 0 0% 100%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Near-black warm base + light gray foreground */
+    --background: 20 10% 6%;            /* #111 – warm near black */
+    --foreground: 30 25% 95%;           /* soft light gray / off‑white */
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    /* Layered surfaces */
+    --card: 24 12% 10%;                 /* slightly lifted panel */
+    --card-foreground: 30 25% 95%;
+    --popover: 24 12% 10%;
+    --popover-foreground: 30 25% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    /* Primary / accent heart reds adapted for dark */
+    --primary: 0 70% 60%;               /* brighter red for contrast */
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 0 70% 56%;
+    --accent: 355 65% 55%;              /* supporting crimson */
+    --accent-foreground: 0 0% 100%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary + muted grays */
+    --secondary: 20 10% 18%;            /* dark gray-brown */
+    --secondary-foreground: 30 20% 88%;
+    --muted: 22 8% 22%;
+    --muted-foreground: 28 12% 70%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    /* Semantic */
+    --success: 145 45% 45%;
+    --success-foreground: 0 0% 100%;
+    --destructive: 0 62% 46%;
+    --destructive-foreground: 0 0% 100%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    /* Inputs / borders */
+    --border: 25 8% 28%;
+    --input: 24 10% 14%;
+    --input-foreground: 30 25% 92%;
+    --ring: 0 70% 60%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    /* Gradients (subtle, low-luminance) */
+    --gradient-medical: linear-gradient(135deg, hsl(0 70% 38%), hsl(355 65% 42%));
+    --gradient-heart: linear-gradient(135deg, hsl(0 72% 42%), hsl(10 70% 46%));
+    --gradient-success: linear-gradient(135deg, hsl(145 45% 32%), hsl(155 40% 38%));
+    --gradient-bg: linear-gradient(135deg, hsl(20 10% 6%), hsl(24 10% 9%));
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    /* Shadows (soft ambient + subtle red glow) */
+    --shadow-medical: 0 6px 24px -6px hsl(0 70% 35% / 0.35), 0 2px 8px -2px hsl(0 0% 0% / 0.5);
+    --shadow-card: 0 4px 18px -8px hsl(0 70% 35% / 0.25), 0 1px 3px hsl(0 0% 0% / 0.6);
+    --shadow-button: 0 3px 10px -2px hsl(0 70% 45% / 0.4), 0 1px 2px hsl(0 0% 0% / 0.6);
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Keep existing radius/transition values from root */
   }
 }
 
